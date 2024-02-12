@@ -34,7 +34,7 @@ public class WordProcessorService {
     // assuming string is not too long so suppose to return in no time. otherwise use 'async' - like if
     // we want to enable accepting large files
     public void addWordsToQueue(String words) {
-
+        // usually I validate the data , here I  skipp it ..
         logger.debug("adding words [{}] to queue",words);
         wordQueue.addAll(WordHandlerUtil.convertCSVStringToList(words));
         triggerAlertAndProcessQueue();
