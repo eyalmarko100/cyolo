@@ -24,17 +24,17 @@ public class WordSortedHandler {
     private static final Logger logger = LoggerFactory.getLogger(WordSortedHandler.class);
     private final Queue<String> wordQueue;
 
-    private final Map<String, Integer> wordMap = new HashMap<>();
+    private final Map<String, Integer> wordMap;
 
     // flag to indicate that processing is running - in case of queue is reaching the threshold  we set
     //  and periodic task is also processing than wait
-    private final AtomicBoolean isProcessing = new AtomicBoolean(false);
+    private final AtomicBoolean isProcessing;
 
     // can be configurable from outside
     @Value("${topNWords}")
     private int topNWords;
 
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private final ExecutorService executorService;
 
     private WordCacheStatsResponse wordCacheStatsResponse;
 
@@ -44,6 +44,9 @@ public class WordSortedHandler {
         this.wordQueue = wordQueue;
         this.mapSorter = mapSorter;
         this.wordCacheStatsResponse = new WordCacheStatsResponse();
+        this.executorService = Executors.newSingleThreadExecutor();
+        this.isProcessing = new AtomicBoolean(false);
+        this.wordMap = new HashMap<>();
     }
 
     // run periodically every n seconds
@@ -56,6 +59,7 @@ public class WordSortedHandler {
     public void triggerProcessing() {
         logger.debug("triggerProcessing");
         executorService.submit(this::processQueue);
+
     }
 
     public WordCacheStatsResponse getCurrentWordStats() {

@@ -12,6 +12,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/*
+   This is the cache object which holds all relevant stats , it has to be synchronized since when the user wants
+   to get it , other thread might update it
+ */
 public class WordCacheStatsResponse {
 
     private List<WordNameValue> topNWordsOccurrence;
