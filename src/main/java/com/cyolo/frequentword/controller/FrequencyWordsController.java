@@ -24,10 +24,10 @@ public class FrequencyWordsController {
 
     }
 
-        @GetMapping("/words-stats")
+    @GetMapping("/words-stats")
     public ResponseEntity<WordCacheStatsResponse> getTopWords() {
 
-        WordCacheStatsResponse wordCacheStatsResponse =wordProcessor.getCurrentFrequentlyStats();
+        WordCacheStatsResponse wordCacheStatsResponse = wordProcessor.getCurrentFrequentlyStats();
 
         return new ResponseEntity<>(wordCacheStatsResponse, HttpStatus.OK);
 
