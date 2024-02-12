@@ -4,7 +4,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-
+/*
+  Java supply very good algorithm for sorting : it uses processor of the machine
+  divide the array into small sub-arrays and merge them in the end
+  however, for small data set its justify to use it - that's why I gave the option to the user to decide
+  which way to use - this one or the simpler one (stream)
+ */
 public class ParallelSortMapSorter implements MapSorter {
 
     @Override
