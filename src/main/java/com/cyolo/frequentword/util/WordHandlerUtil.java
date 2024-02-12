@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.SortedMap;
-
+/*
+ Util class - usually used for handling more than one utility but for separation of concern I rather use it
+ */
 public class WordHandlerUtil {
 
     public static List<String> convertCSVStringToList(String csvString) {
@@ -16,9 +18,5 @@ public class WordHandlerUtil {
 
     }
 
-    public static List<WordNameValue> buildListOfPair(SortedMap<String, Integer> sortedMap) {
-        List<WordNameValue> wordWordNameValues = new ArrayList<>();
 
-        return wordWordNameValues;
-    }
 }
